@@ -13,3 +13,9 @@ Natural Language Processing with Deep Learning in Python
 * Theano
 
 * TensorFlow
+
+# Problem Statement
+
+Text entailment on large dataset 
+
+
