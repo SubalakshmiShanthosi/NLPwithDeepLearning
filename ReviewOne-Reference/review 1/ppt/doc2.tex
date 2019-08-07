@@ -1,0 +1,203 @@
+
+\documentclass{beamer}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\usepackage{beamerthemeshadow}
+\begin{document}
+\title{\textbf{Deep Learning Approach For Precedence Retrieval Systems } }
+
+\author{ \textbf{ Presented By,}\\  KAYALVIZHI S \\(312217405004) M.E(CSE) \\  \textbf{Supervised By,} \\ Dr.D.Thenmozhi}
+%\author{}
+\date{\textbf{REVIEW-1 \\ AUGUST 20,2018} }
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}\frametitle{Outline}
+\begin{itemize}
+\item Introduction
+\item Motivation
+\item Problem statement
+\item Literature Survey
+\item Existing System
+\item Proposed Work
+\item Dataset Description
+\item References
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Introduction}
+Precedence retrieval:\\
+\begin{itemize}
+
+\item Precedence retrieval is the process of retrieving relevant prior documents with respect to a current document.
+\item In the domain of law,the documents of previous similar cases are often used as references and tagging them with a set of keywords is essential.
+\item Judges and Lawyers consult prior cases to ensure that a similar situation is treated similarly in every case.
+ \end{itemize}
+\end{frame}
+\begin{frame}\frametitle{Introduction(contd...)}
+Catchphrase extraction:\\
+	\begin{itemize}		
+
+\item Catchphrases are short phrases within the text of the document which can be extracted by selecting certain portions from the text of the document.
+\item Catchphrases act as a tool to find similarity between two documents.
+\item Thus,in our project,we work to retrieve suitable prior case for the given current case and to extract catchphrases for a given document.
+ \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Motivation}
+  
+    \begin{itemize}
+\item It is critical for legal practitioners to find and study previous court cases,so as to examine how the ongoing issues were interpreted in the older cases.
+\item Thus,an automated precedence retrieval approach is desired.
+\item It is essential for legal practitioners to have a concise representation of the core legal issues described in a legal text.
+\item Thus,an automated catchphrase extraction approach is needed.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Problem Statement}
+  
+    \begin{itemize}
+\item Given a set of current case documents and a set of prior case documents,the system will extract the catchphrases present in the documents and retrieve the relevant prior case documents for all the current case documents.
+    \end{itemize}
+\end{frame}
+\begin{frame}\frametitle{Literature Survey}
+    Distributed Representation in Information Retrieval\cite{reshma2017distributed}
+  
+    \begin{itemize}
+\item The given training and test documents are represented as vectors using Doc2Vec.
+\item Cosine distance between the current and prior document vectors are measured and ranked.
+\item To extract the catchphrases,cosine distance between the catchphrase vector and the document vectors are calculated.
+\item Based on the calculated distance the prior cases and catchphrases are ranked.        
+            
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Literature Survey (Contd...)}
+    Catchphrase Extraction from Legal Documents Using LSTM \\Networks\cite{bhargava2017catchphrase}
+  
+    \begin{itemize}
+    	\item The problem is formulated as a classification task and the objective is to learn a classifier using LSTM network.
+\item The proposed methodology involves a pipelined approach and is divided into four phases: 
+\begin{itemize}
+	\item Pre-processing
+	\item Candidate phrase generation: n-grams with n in range 1 to 4 were created from the text.
+	\item Create vector representations for the phrases
+	\item Training a LSTM network 
+\end{itemize}
+ 
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Literature Survey (Contd...)}
+    Catch Phrase Extraction From Legal Documents Using Deep Neural Network\cite{das2017catch}
+    \begin{itemize}
+\item For each file, a set of potential meaningful phrases were created and then are classified using deep neural network.
+\item The proposed steps are preprocessing,create potential meaningful phrases based on common grammar of phrases,feature selection,label the vectors,classification and training the model.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Literature Survey (Contd...)}
+   A Text Similarity Approach for Precedence Retrieval from Legal Documents\cite{thenmozhi2017text}
+  
+    \begin{itemize}
+\item The given text are all preprocessed.  
+\item Linguistic features were extracted from all the legal documents.
+\item Feature vectors were constructed for the documents using TF-IDF score or Word2Vec.
+\item Cosine similarity score between each current case with all the prior cases was calculated.
+\item Prior cases were ranked based on the similarity score for each current case
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Literature Survey (Contd...)}
+      A Deep Network Model for Paraphrase Detection in Short Text Messages\cite{agarwal2017deep}
+	
+	\begin{itemize}
+		\item The proposed paraphrase detection model is composed of two main components,i.e.,pair-wise word similarity matching and sentence modelling.
+		\item The pair-wise similarity matching model is used to extract similarity information between pairs of sentences.
+		\item The features generated by the convolutional layer have the form of n-grams, and are fed into the LSTM.
+		\item Sentence modelling component is able to process sequential input with the aim to learn the long-term dependencies
+		in the sentences.
+		\item Then,the two sentences are matched and a similarity matrix is generated.
+		\item The CNN is applied onto the similarity matrix to learn the patterns in the semantic correspondence between the two
+		sentences.         
+	\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Exisiting System}
+ \begin{itemize}
+ 	\item The existing approaches have used cosine similarity approach to retrieve the suitable prior case for the given current case and then rank the prior case documents\cite{reshma2017distributed}\cite{thenmozhi2017text}.
+ 	\item Deep neural network have been proposed to detect and extract catchphrases\cite{bhargava2017catchphrase}\cite{das2017catch}.
+ 	\item Deep learning approach have been used to detect the paraphrase by a hybrid deep neural architecture which composed of CNN and LSTM model\cite{agarwal2017deep}. 	
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Proposed Work}
+  
+    \begin{itemize}
+      \item In our work, the catchphrases from documents will be extracted and suitable prior case for the given current case will be retrieved using deep learning approach.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Dataset Description}
+	\begin{itemize}
+		\item  Forum of Information Retrieval Evaluation
+in 2017(Fire2017  IRLeD)
+	\end{itemize}
+\begin{itemize}
+ \item Precedence Retrieval:
+\end{itemize}
+		\begin{itemize}
+			  The dataset consists of 200 current case which is formed by removing the links to the 2000 prior case and the prior case which have been cited by the case in current case.
+		\end{itemize}
+\begin{itemize}
+ \item Catchphrase Extraction:
+\end{itemize}
+	\begin{itemize}
+The dataset consists of 100 documents and their corresponding gold standard catchphrases for training and the test set consists of 300 separate documents whose catchphrases were to be found.
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{References}
+\begin{thebibliography}{99}
+    \bibliographystyle{plain}
+	\bibitem[1]{reshma2017distributed}Reshma, U and Kumar, M Anand and Soman, KP,{\em Distributed Representation in Information Retrieval-AMRITA\_CEN\_NLP@ IRLeD 2017.}FIRE (Working Notes)69--71,2017..
+	\bibitem[2]{bhargava2017catchphrase}Bhargava, Rupal and Nigwekar, Sukrut and Sharma, Yashvardhan,{\em Catchphrase Extraction from Legal Documents Using LSTM Networks.}FIRE (Working Notes) 72--73,2017.
+	\bibitem[3]{das2017catch}Das, Sourav and Barua, Ranojoy, {\em Catch Phrase Extraction from Legal Documents Using Deep Neural Network.},FIRE (Working Notes)78--79,2017.
+\end{thebibliography}
+\end{frame}
+	
+\begin{frame}\frametitle{References}
+	\begin{thebibliography}{99}	
+	\bibitem[4]{thenmozhi2017text} Thenmozhi, D and Kannan, Kawshik and Aravindan, Chandrabose, {\em A Text Similarity Approach for Precedence Retrieval from Legal Documents.},FIRE (Working Notes)90--91,2017.
+	\bibitem[5]{agarwal2017deep}Agarwal, Basant and Ramampiaro, Heri and Langseth, Helge and Ruocco, Massimiliano,{\em A Deep Network Model for Paraphrase Detection in Short Text Messages} ,arXiv preprint arXiv:1712.02820,2017.
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}
+    \begin{LARGE}
+    \begin{Huge}
+    \begin{center}
+        \textbf{THANK YOU}
+    \end{center}  
+    \end{Huge}  
+    \end{LARGE}
+  
+  
+\end{frame}
+
+\end{document}

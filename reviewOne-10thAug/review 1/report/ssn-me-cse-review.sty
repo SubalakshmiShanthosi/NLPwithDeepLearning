@@ -1,0 +1,46 @@
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{geometry}
+\usepackage{hyphenat}
+\usepackage{fullpage}
+\usepackage{setspace}
+\onehalfspacing
+
+\newsavebox{\btitle}
+\newsavebox{\bstudent}
+\newsavebox{\bguide}
+\newsavebox{\bphase}
+\newsavebox{\breview}
+\newsavebox{\bsemester}
+\newsavebox{\breviewdate}
+
+\newcommand{\ptitle}[1]{\savebox{\btitle}{\parbox[c]{\linewidth}{\centering \Large \nohyphens{\textbf{#1}}}}}
+\newcommand{\student}[1]{\sbox{\bstudent}{#1}}
+\newcommand{\semester}[1]{\sbox{\bsemester}{Semester #1}}
+\newcommand{\guide}[1]{\sbox{\bguide}{#1}}
+\newcommand{\phase}[1]{\sbox{\bphase}{#1}}
+\newcommand{\review}[1]{\sbox{\breview}{\textbf{Project Review: #1}}}
+\newcommand{\reviewdate}[1]{\sbox{\breviewdate}{#1}}
+
+\newcommand{\reviewtitle}{%
+  \usebox{\btitle}\\
+  \vspace{.5\baselineskip}
+  
+  \begin{minipage}{.5\linewidth}
+    \begin{center}
+      \usebox{\bstudent}\\
+      ME CSE, \usebox{\bsemester}\\
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{.5\linewidth}
+    \begin{center}
+      \usebox{\bguide}\\
+      Supervisor\\
+    \end{center}
+  \end{minipage}
+  \begin{center}
+    \usebox{\breview} (\usebox{\breviewdate})\\
+    Department of Computer Science and Engineering\\
+    SSN College of Engineering\\
+  \end{center}
+}
