@@ -5,11 +5,11 @@
 
 \usepackage{beamerthemeshadow}
 \begin{document}
-\title{\textbf{Deep Learning Approach For Precedence Retrieval Systems } }
+\title{\textbf{Textual Entailment on Large Datasets} }
 
-\author{ \textbf{ Presented By,}\\  KAYALVIZHI S \\(312217405004) M.E(CSE) \\  \textbf{Supervised By,} \\ Dr.D.Thenmozhi}
+\author{ \textbf{ Presented By,}\\  SUBALAKSHMI SHANTHOSI S \\(186001008) M.E(CSE) \\~\\  \textbf{Supervised By,} \\ Dr. Chandrabose Aravindan}
 %\author{}
-\date{\textbf{REVIEW-1 \\ AUGUST 20,2018} }
+\date{\textbf{REVIEW-1 \\ AUGUST 08,2019} }
 
 
 \begin{frame}
@@ -33,12 +33,23 @@
 
 
 \begin{frame}\frametitle{Introduction}
-Precedence retrieval:\\
+Textual Entailment:\\
 \begin{itemize}
 
-\item Precedence retrieval is the process of retrieving relevant prior documents with respect to a current document.
-\item In the domain of law,the documents of previous similar cases are often used as references and tagging them with a set of keywords is essential.
-\item Judges and Lawyers consult prior cases to ensure that a similar situation is treated similarly in every case.
+\item Textual entailment (TE) in natural language processing is a directional relation between text fragments. The relation holds whenever the truth of one text fragment foll																																																								ows from another text.
+\item In other words, Textual entailment is the task of determining whether a “hypothesis” is true,
+given a “premise”.
+\item Textual Entailment relations:
+\\ \centering{text: If you help the needy, God will reward you.}
+\begin{enumerate}
+	\item A \textit{positive TE}(text entails hypothesis):
+	\\ hypothesis: Giving money to a poor man has good consequences.
+	\item A \textit{negative TE}(text contradicts hypothesis):
+	\\ hypothesis: Giving money to a poor man has no consequences.
+	\item A \textit{non TE}(text does not entail nor contradict):
+	\\ hypothesis: Giving money to a poor man will make you a better person.
+	
+\end{enumerate}
  \end{itemize}
 \end{frame}
 \begin{frame}\frametitle{Introduction(contd...)}
@@ -160,13 +171,13 @@ in 2017(Fire2017  IRLeD)
  \item Precedence Retrieval:
 \end{itemize}
 		\begin{itemize}
-			  The dataset consists of 200 current case which is formed by removing the links to the 2000 prior case and the prior case which have been cited by the case in current case.
+			 \item The dataset consists of 200 current case which is formed by removing the links to the 2000 prior case and the prior case which have been cited by the case in current case.
 		\end{itemize}
 \begin{itemize}
  \item Catchphrase Extraction:
 \end{itemize}
 	\begin{itemize}
-The dataset consists of 100 documents and their corresponding gold standard catchphrases for training and the test set consists of 300 separate documents whose catchphrases were to be found.
+\item The dataset consists of 100 documents and their corresponding gold standard catchphrases for training and the test set consists of 300 separate documents whose catchphrases were to be found.
 	\end{itemize}
 \end{frame}
 
