@@ -5,11 +5,11 @@
 
 \usepackage{beamerthemeshadow}
 \begin{document}
-\title{\textbf{Textual Entailment on Large Datasets} }
+\title{\textbf{Textual Entailment Recognition on Large Datasets} }
 
-\author{ \textbf{ Presented By,}\\  SUBALAKSHMI SHANTHOSI S \\(186001008) M.E(CSE) \\~\\  \textbf{Supervised By,} \\ Dr. Chandrabose Aravindan}
+\author{ \textbf{ Presented By,}\\  SUBALAKSHMI SHANTHOSI S \\(186001008) M.E (CSE) \\~\\  \textbf{Supervised By,} \\ Dr. Aravindan Chandrabose}
 %\author{}
-\date{\textbf{REVIEW-1 \\ AUGUST 08,2019} }
+\date{\textbf{REVIEW-1 \\ AUGUST 14,2019} }
 
 
 \begin{frame}
@@ -53,12 +53,20 @@ given a “premise”.
  \end{itemize}
 \end{frame}
 \begin{frame}\frametitle{Introduction(contd...)}
-Catchphrase extraction:\\
+Textual Entailment on large corpus:\\
 	\begin{itemize}		
 
-\item Catchphrases are short phrases within the text of the document which can be extracted by selecting certain portions from the text of the document.
-\item Catchphrases act as a tool to find similarity between two documents.
-\item Thus,in our project,we work to retrieve suitable prior case for the given current case and to extract catchphrases for a given document.
+\item Significant decrease in accuracy when large datasets are used to train textual entailment
+recognition systems.\\
+There are two major reasons for this
+counter-intuitive result:
+\begin{itemize}
+	\item Homogeneity: Hand curated datasets which are aligned to a specific task by combining different sources data which have distinct characteristics.
+	Thus, these datasets do not always capture the kind
+	of entailment queries that naturally arise in an end task. 
+	\item Corpus size: Larger dataset of higher magnitude are needed to capture the complex properties characterizing entailment. 
+\end{itemize}
+\item Social media texts which are publicly avaliable is voluminous and possible partial relationship as similarity between the texts(T-H) pair is relaxed and found either of the two to lacks or contains additional information than the other text.	 
  \end{itemize}
 \end{frame}
 
@@ -67,10 +75,11 @@ Catchphrase extraction:\\
 \begin{frame}\frametitle{Motivation}
   
     \begin{itemize}
-\item It is critical for legal practitioners to find and study previous court cases,so as to examine how the ongoing issues were interpreted in the older cases.
-\item Thus,an automated precedence retrieval approach is desired.
-\item It is essential for legal practitioners to have a concise representation of the core legal issues described in a legal text.
-\item Thus,an automated catchphrase extraction approach is needed.
+\item Textual Entailment is predominantly dependent on high quality,huge annotated corpus. However, until now, the scarcity of such data on one hand, and the costs of creating new datasets of reasonable size on the other, have represented a bottleneck for a steady advancement
+towards achieving the state-of-the-art performance.
+\item It is essential to derive a mechanism for adopting relaxed relation aka. Partial Textual Entailment(PTE) on social media text as either one of the texts lack/suffice with evidence.
+\item Also the source of knowledge base plays a pivotal role in maximising the accuracy(F1 score).
+\item Research on Partial Entailment is an unexplored paradigm.
 \end{itemize}
 \end{frame}
 
@@ -79,85 +88,94 @@ Catchphrase extraction:\\
 \begin{frame}\frametitle{Problem Statement}
   
     \begin{itemize}
-\item Given a set of current case documents and a set of prior case documents,the system will extract the catchphrases present in the documents and retrieve the relevant prior case documents for all the current case documents.
+\item Given an collection of annotated tweets using an annotation model that encompasses following levels indicating the depth of detail on Offensive Language Identification and Categorisation task.Our goal is to find the presence of offensive language and the severity of its existance during impact assessment.\\~\\
+Sub-Tasks identified for this problem are:
+\begin{enumerate}
+	\item Sub-task A - Offensive language identification
+	\item Sub-task B - Automatic categorization of offense types
+	\item Sub-task C - Offense target identification.
+\end{enumerate}
     \end{itemize}
 \end{frame}
 \begin{frame}\frametitle{Literature Survey}
-    Distributed Representation in Information Retrieval\cite{reshma2017distributed}
-  
-    \begin{itemize}
-\item The given training and test documents are represented as vectors using Doc2Vec.
-\item Cosine distance between the current and prior document vectors are measured and ranked.
-\item To extract the catchphrases,cosine distance between the catchphrase vector and the document vectors are calculated.
-\item Based on the calculated distance the prior cases and catchphrases are ranked.        
-            
-    \end{itemize}
+    SSN\_NLP at SemEval-2019 Task 6: Offensive Language Identification in Social Media using Traditional and Deep Machine Learning Approaches\cite{ssnNLPSemEvalT6}
+  \begin{itemize}
+\item Offensive Language Identification Dataset (OLID), a new large-scale dataset of English tweets with high-quality annotation of the target and type
+of offenses is used for training and testing models\cite{zampierietal2019}.
+\item Traditional Machine Learning and Deep Learning techniques are employed to identify offensive languages.
+\item In Deep Learning approach dataset is preprocessed by using Bi-LSTM to vectorise the tweets and CNN is used for detecting aggression in text.
+\item In Traditional Machine Learning approach feature vectors are constructed using TF-IDF scoring and Multinomial Naive Bayes (MNB) and Support Vector Machine (SVM) with Stochastic Gradient Descent optimizer to build the models.   
+\end{itemize}
 \end{frame}
 
 \begin{frame}\frametitle{Literature Survey (Contd...)}
-    Catchphrase Extraction from Legal Documents Using LSTM \\Networks\cite{bhargava2017catchphrase}
-  
+    An Exploration of State-of-the-art Methods for Offensive Language Detection\cite{stateofartSemEvalT6}
     \begin{itemize}
-    	\item The problem is formulated as a classification task and the objective is to learn a classifier using LSTM network.
-\item The proposed methodology involves a pipelined approach and is divided into four phases: 
-\begin{itemize}
-	\item Pre-processing
-	\item Candidate phrase generation: n-grams with n in range 1 to 4 were created from the text.
-	\item Create vector representations for the phrases
-	\item Training a LSTM network 
-\end{itemize}
+    	\item OLID dataset is partially preprocessed to annotate user as @USER and URL's as URL.Words are transformed to lower case and removing alphanumeric symbols leaving behind only letters,digits and underscore as acceptable characters.
+\item Word2Vec is used for generating word embeddings. Rather than using pre-trained models such as scraped Wikipedia pages,  a combination of transforming vectors (max,averaging) is used for generating multi-word single vector for further processing.
+\item  Auto-Keras was used to train a pre-trained BERT representation.But,BERT regards capitalized and syntactically incorrect statements as noise thus failing to categorise the level of abusive nature in that particular sentence.
+\item FastText trained with random search for fine tuning the existing pretrained model with scraped Wikipedia pages.
  
     \end{itemize}
 \end{frame}
 
 
 \begin{frame}\frametitle{Literature Survey (Contd...)}
-    Catch Phrase Extraction From Legal Documents Using Deep Neural Network\cite{das2017catch}
+   Recognition of Partial Textual Entailment for Indian Social Media Text\cite{partialTESocial}
     \begin{itemize}
-\item For each file, a set of potential meaningful phrases were created and then are classified using deep neural network.
-\item The proposed steps are preprocessing,create potential meaningful phrases based on common grammar of phrases,feature selection,label the vectors,classification and training the model.
+\item Partial Textual Entailment in NLP is used for defining partial entailment relationship between T-H pair.
+\item Emperical Definition of Partial Entailment:
+Defines four categories of PTE.
+\begin{enumerate}
+	\item PTE-I :Original textual entailment relationship with bi-directional correspondence.
+	\item PTE-II : If either of T or H entails whole meaning of another and contains additional information.
+	\item PTE-III:If a portion of H entails from a portion
+	of T or vice verse.
+	\item PTE-IV: If T or H does not entail from H or T. 
+\end{enumerate}
+\item Sequential Minimal Optimization(SMO) based PTE recognition along with other Machine Learning Techniques like Random forest (RF), Decision tree (DT), Logistic regression (LR) is used.
     \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{Literature Survey (Contd...)}
-   A Text Similarity Approach for Precedence Retrieval from Legal Documents\cite{thenmozhi2017text}
-  
-    \begin{itemize}
-\item The given text are all preprocessed.  
-\item Linguistic features were extracted from all the legal documents.
-\item Feature vectors were constructed for the documents using TF-IDF score or Word2Vec.
-\item Cosine similarity score between each current case with all the prior cases was calculated.
-\item Prior cases were ranked based on the similarity score for each current case
-    \end{itemize}
-\end{frame}
 
 \begin{frame}\frametitle{Literature Survey (Contd...)}
-      A Deep Network Model for Paraphrase Detection in Short Text Messages\cite{agarwal2017deep}
+      Absit invidia verbo: Comparing Deep Learning methods for offensive language\cite{comparingDeepLearning}
 	
 	\begin{itemize}
-		\item The proposed paraphrase detection model is composed of two main components,i.e.,pair-wise word similarity matching and sentence modelling.
-		\item The pair-wise similarity matching model is used to extract similarity information between pairs of sentences.
-		\item The features generated by the convolutional layer have the form of n-grams, and are fed into the LSTM.
-		\item Sentence modelling component is able to process sequential input with the aim to learn the long-term dependencies
-		in the sentences.
-		\item Then,the two sentences are matched and a similarity matrix is generated.
-		\item The CNN is applied onto the similarity matrix to learn the patterns in the semantic correspondence between the two
-		sentences.         
+		\item Bag-of-words model is used as dataset initially and then word2idx for neural network model. 
+		\item Extensive use of PyTorch , Keras, scikit-learn, and Natural Language Toolkit(NLTK) is observed.
+		\item PyTorch is selected to implement CNN, Keras for RNN and Linear Regression using scikit-learn.
+		\item For Offensive language identification Logistic Regression,LSTM and B-LSTM outperforms other models.
+	    \item Each tasks is trained with 90\% of samples and 10\% of samples are used for testing.L2 regularisation is used for optimising results.
 	\end{itemize}
 \end{frame}
 
+\begin{frame}\frametitle{Literature Survey (Contd...)}
+Benchmarking Aggression Identification in Social Media\cite{benchmarkAggressionIden}
+
+\begin{itemize}
+	\item In this work,a dataset of 15,000 aggression-annotated Facebook Posts and Comments each in Hindi (in both Roman and Devanagari script) and English are provided for training and validation. For testing, two different sets - one from Facebook and another from a different social media - were provided.
+	\item The aim of this shared task is Classification of Social Media Text as overt aggression, covert aggression and nonaggression.
+	\item Multilingual lexicon of aggressive words. The lexicon is obtained by automatic translation from an handmade lexicon of offensive words in Italian, with minimal human supervision. The original words are expanded into a list of their senses. The senses are manually annotated to filter out senses that are never used in an offensive context.
+	\item Even LSTM pretained FastText vector performed better than conventional Neural network models.
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}\frametitle{Exisiting System}
  \begin{itemize}
- 	\item The existing approaches have used cosine similarity approach to retrieve the suitable prior case for the given current case and then rank the prior case documents\cite{reshma2017distributed}\cite{thenmozhi2017text}.
- 	\item Deep neural network have been proposed to detect and extract catchphrases\cite{bhargava2017catchphrase}\cite{das2017catch}.
- 	\item Deep learning approach have been used to detect the paraphrase by a hybrid deep neural architecture which composed of CNN and LSTM model\cite{agarwal2017deep}. 	
+ 	\item The existing approaches have used Deep Learning and pre-trained models like BERT,FastText,CNN or Conventional Machine Learning techniques like Naive Bayes and Stochastic Gradient Descent for identification and categorisation of Offensive language in Social media texts\cite{ssnNLPSemEvalT6}\cite{stateofartSemEvalT6}.
+ 	\item Partial Textual Entailment can be used for Offensive Language Categorisation as it aims at finding SMO for partial matching and reducing reduntant information.\cite{partialTESocial}
+ 	\item Deep learning approach have been predominantly used and shows promising results even on Multi-Lingual datasets.\cite{benchmarkAggressionIden}. 	
 \end{itemize}
 \end{frame}
 
 \begin{frame}\frametitle{Proposed Work}
   
     \begin{itemize}
-      \item In our work, the catchphrases from documents will be extracted and suitable prior case for the given current case will be retrieved using deep learning approach.
+      \item In our work, the offensive language usage can be identified in social media text by defining PTE rules by using Sequential Minimal Optimization(SMO) method.
+      \item Increasing the dataset population by using Semantic textual similarity for determining paraphrases of offensive slang sentences.
+      \item Finding means to incorporate Transfer Learning approach by using pre-trained models like XLM ,BERT and XLNet.
 
 \end{itemize}
 \end{frame}
@@ -186,16 +204,19 @@ in 2017(Fire2017  IRLeD)
 \begin{frame}\frametitle{References}
 \begin{thebibliography}{99}
     \bibliographystyle{plain}
-	\bibitem[1]{reshma2017distributed}Reshma, U and Kumar, M Anand and Soman, KP,{\em Distributed Representation in Information Retrieval-AMRITA\_CEN\_NLP@ IRLeD 2017.}FIRE (Working Notes)69--71,2017..
-	\bibitem[2]{bhargava2017catchphrase}Bhargava, Rupal and Nigwekar, Sukrut and Sharma, Yashvardhan,{\em Catchphrase Extraction from Legal Documents Using LSTM Networks.}FIRE (Working Notes) 72--73,2017.
-	\bibitem[3]{das2017catch}Das, Sourav and Barua, Ranojoy, {\em Catch Phrase Extraction from Legal Documents Using Deep Neural Network.},FIRE (Working Notes)78--79,2017.
+	\bibitem[1]{ssnNLPSemEvalT6}D. Thenmozhi, B. Senthil Kumar, Chandrabose Aravindan, S.Srinethe,{\em SSN NLP at SemEval-2019 Task 6: Offensive Language Identification in Social Media using Traditional and Deep Machine Learning Approaches.}Proceedings of the 13th International Workshop on Semantic Evaluation (SemEval-2019) 739 -- 744,2019.
+	\bibitem[2]{stateofartSemEvalT6}Harrison Uglow,Martin Zlocha,Szymon Zmyslony,{\em An Exploration of State-of-the-art Methods for Offensive Language Detection.}arXiv:1903.07445 1-- 5,2019.
+	\bibitem[3]{partialTESocial}Dwijen Rudrapal , Amitava Das  , Baby Bhattacharya ,{\em Recognition of Partial Textual Entailment for Indian Social Media Text.}Computación y Sistemas, Year 23, Vol. 23  143 -- 152,2019.
 \end{thebibliography}
 \end{frame}
 	
 \begin{frame}\frametitle{References}
 	\begin{thebibliography}{99}	
-	\bibitem[4]{thenmozhi2017text} Thenmozhi, D and Kannan, Kawshik and Aravindan, Chandrabose, {\em A Text Similarity Approach for Precedence Retrieval from Legal Documents.},FIRE (Working Notes)90--91,2017.
-	\bibitem[5]{agarwal2017deep}Agarwal, Basant and Ramampiaro, Heri and Langseth, Helge and Ruocco, Massimiliano,{\em A Deep Network Model for Paraphrase Detection in Short Text Messages} ,arXiv preprint arXiv:1712.02820,2017.
+	\bibitem[4]{comparingDeepLearning} Bogdan Lazarescu, Christo Lolov , Silvia Sapora, {\em Absit invidia verbo: Comparing Deep Learning methods for offensive
+	language.},arXiv:1903.05929v3 1-- 5,2019.
+	\bibitem[5]{benchmarkAggressionIden}Ritesh Kumar
+	, Atul Kr. Ojha , Shervin Malmasi , Marcos Zampieri ,{\em Benchmarking Aggression Identification in Social Media} ,Proceedings of the First Workshop on Trolling, Aggression and Cyberbullying,  1 -- 11 , 2018.
+	\bibitem[6]{zampierietal2019} Zampieri, Marcos and Malmasi, Shervin and Nakov, Preslav and Rosenthal, Sara and Farra, Noura and Kumar, Ritesh,{\em Predicting the Type and Target of Offensive Posts in Social Media} ,  Proceedings of NAACL,2019.
 \end{thebibliography}
 \end{frame}
 
